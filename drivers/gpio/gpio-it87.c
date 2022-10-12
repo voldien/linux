@@ -32,6 +32,7 @@
 #define IT8761_ID	0x8761
 #define IT8772_ID	0x8772
 #define IT8786_ID	0x8786
+#define IT8783_ID	0x8783
 
 /* IO Ports */
 #define REG		0x2e
@@ -316,6 +317,14 @@ static int __init it87_gpio_init(void)
 		it87_gpio->simple_base = 0xc0;
 		it87_gpio->simple_size = 5;
 		it87_gpio->chip.ngpio = 64;
+		break;
+	case IT8783_ID:
+		gpio_ba_reg = 0x62;
+		it87_gpio->io_size = 12;
+		it87_gpio->output_base = 0xc8;
+		it87_gpio->simple_base = 0xc0;
+		it87_gpio->simple_size = 5;
+		it87_gpio->chip.ngpio = 40;
 		break;
 	case IT8761_ID:
 		gpio_ba_reg = 0x60;
